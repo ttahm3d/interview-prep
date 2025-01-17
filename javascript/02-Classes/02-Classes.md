@@ -225,3 +225,52 @@ The “extends” syntax sets up two prototypes:
 
 Between "prototype" of the constructor functions (for methods).
 Between the constructor functions themselves (for static methods).
+
+## Private and protected methods and properties
+
+In object-oriented programming, properties and methods are split into two groups:
+
+- Internal interface – methods and properties, accessible from other methods of the class, but not from the outside. - **Private fields**
+- External interface – methods and properties, accessible also from outside the class. - **Public fields**
+- Fields that are accessible from inside and the class and other classes that extend it are callled as **Protiected fields**. _Not implemented in JS_. But are emulated
+
+### Protected
+
+> Protected properties are usually prefixed with an underscore \_.
+
+```js
+class Students {
+  _numberOfStudents = 0;
+
+  set numberOfStudents(count) {
+    if (count < 0) {
+      count = 0;
+    }
+    this._numberOfStudents = count;
+  }
+
+  get numberOfStudents() {
+    return this._numberOfStudents;
+  }
+}
+
+const s = new Students();
+
+s._numberOfStudents = -10; // this modifies the value
+s.numberOfStudents = -10; // this does not
+
+// don't use _ prefixed variables outside
+```
+
+### Readonly
+
+Define only getter
+
+### Private
+
+Privates should start with #. They are only accessible from inside the class.
+
+Can be used for both variables and functions
+
+> Note:
+> Built in classes don't inherit static methods from each other
