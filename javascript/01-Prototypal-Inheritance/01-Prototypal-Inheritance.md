@@ -148,3 +148,11 @@ String.prototype.returnFirstLetter = function() {
 ```
 
 This method gets added to the prototype and is accessible on all the strings.
+
+## Setting prototype without getter and setter method
+
+`__proto__` is the getter and setter.
+
+getPrototypeOf() -> returns prototype of the object
+
+setPrototypeOf(obj, proto) -> sets prototype of object obj to proto
