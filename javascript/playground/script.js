@@ -1,7 +1,7 @@
 function* multiplyTest() {
   let result = yield "8 * 8 = ?";
 
-  alert(result);
+  // alert(result);
 }
 const mul = multiplyTest();
 const q = mul.next();
