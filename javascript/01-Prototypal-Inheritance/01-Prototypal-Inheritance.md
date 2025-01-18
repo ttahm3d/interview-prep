@@ -14,7 +14,7 @@
 
 ## Prototype
 
-In javascript every object has a hidden property `[[Prototype]]` that is null references another object. This other object is called as **prototype**.
+In javascript every object has a hidden property `[[Prototype]]` that is null or references another object. This other object is called as **prototype**.
 
 > NOTE:
 > `[[Prototype]]` is name of the property and the value it refernces is the Prototype. The property is hidden and to set its value we can use `__proto__`
