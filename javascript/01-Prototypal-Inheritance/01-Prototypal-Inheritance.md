@@ -62,6 +62,8 @@ alert(Object.keys(rabbit)); // jumps
 
 `for..in` loops over both own and inherited keys
 
+> NOTE: Enumerable `for...in` and iterable `for of`
+
 ```JS
 for(let prop in rabbit) alert(prop); // jumps, then eats
 ```
@@ -90,6 +92,8 @@ Setting Rabbit.prototype = animal literally states the following: “When a new 
 */
 ```
 
+![alt text](image.png)
+
 If the prototype is changed, it will affect only newly created objects. Old ones remain as is.
 
 The "prototype" property only has such a special effect when set on a constructor function, and invoked with new.
@@ -104,7 +108,7 @@ Rabbit.prototype.constructor === Rabbit // true
 
 ## "prototype" property
 
-`Object.prototype` is widely used in javascript. All build-in the constructor functions use it
+`Object.prototype` is widely used in javascript. All built-in the constructor functions use it
 
 Consider the below code
 
