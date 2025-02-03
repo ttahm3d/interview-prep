@@ -37,3 +37,45 @@ function throttle(fn, delay) {
     }, delay);
   };
 }
+
+// polyfill for reduce
+Array.prototype.myReduce = function (callback, initialValue) {
+  let accumulator = initialValue || this[0];
+
+  for (let i = 0; i < this.length; i++) {
+    if (initialValue === undefined) {
+      accumulator = this[i];
+      initialValue = this[i];
+    } else accumulator = callback(accumulator, this[i], i, this);
+  }
+
+  return accumulator;
+};
+
+// polyfill for call, apply and bind
+Function.prototype.myCall = function (context, ...args) {
+  context = context || window;
+  const fn = Symbol();
+  context[fn] = this;
+  const result = context[fn](...args);
+  delete context[fn];
+  return result;
+};
+
+Function.prototype.myApply = function (context, args) {
+  context = context || window;
+  const fn = Symbol();
+  context[fn] = this;
+  const result = context[fn](...args);
+  delete context[fn];
+  return result;
+};
+
+Function.prototype.myBind = function (context, ...args) {
+  const fn = this;
+  return function (...innerArgs) {
+    return fn.apply(context, [...args, ...innerArgs]);
+  };
+};
+
+//

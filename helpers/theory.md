@@ -238,4 +238,50 @@
 
     **Unknown is preferred**
 
-13.
+13. What are A/AA/AAA in accessibility?
+
+    AA and AAA are levels of accessibility compliance in the Web Content Accessibility Guidelines (WCAG). AA is the mid-range level, while AAA is the highest level.
+
+    Explanation
+
+    - Level A: The minimum level of accessibility, which removes basic barriers
+    - Level AA: Removes more barriers, and is the standard level for most websites
+    - Level AAA: The highest level of accessibility, which includes more detailed and stringent criteria
+
+    What's included in each level?
+
+    - Level AA
+      Includes features like captions for videos, dark mode, color-blind mode, and keyboard accessibility
+    - Level AAA
+      Includes strict guidelines for optimal accessibility, such as section headings and meaningful link text
+
+    Why are these levels important?
+
+    - They help create digital experiences that are inclusive and welcoming to all
+    - They help ensure that content is accessible to the largest number of people possible
+
+    When should you aim for each level?
+
+    - Level AA
+      This is usually the level required by accessibility laws, and is a good baseline to aim for
+
+    - Level AAA
+      This is the industry gold standard, but it may not be realistic or possible for all types of content
+
+14. What are ARIA live regions?
+
+    When the content on app loads without causing reload, it should be notified to the user using assistive technologies.
+
+    ARIA live regions help in this regard.
+
+    ```
+    aria-live:POLITENESS_LEVEL
+    ```
+
+    POLITENESSLEVEL - `off`, `polite` or `assertive`
+
+    - off - announces changes when element has focus
+
+    - polite - when changes neeed to be announced but are not time critical
+
+    - assertive - time critical changes

@@ -9,4 +9,7 @@
 
 1. [Events](/browser/01-Events/01-Events.md)
 
-4th Feb Prep - [Link](/helpers/theory.md)
+4th Feb Prep -
+
+- [Theory](/helpers/theory.md)
+- [Coding](/helpers/coding.md)
