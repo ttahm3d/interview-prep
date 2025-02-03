@@ -123,3 +123,80 @@
 
     initApp();
     ```
+
+5.  Cart API
+
+    ```html
+    <div id="cart"></div>
+    <script src="cartApi.js"></script>
+    ```
+
+    ```js
+    const cartContainer = document.querySelector(".cart");
+
+    async function fetchCartItems() {
+      const response = await fetch("https://fakestoreapi.com/carts/6");
+      const cartItems = await response.json();
+      const productCalls = cartItems.products.map((product) =>
+        fetch(`https://fakestoreapi.com/products/${product.productId}`)
+      );
+      const products = await Promise.all(productCalls);
+      const productData = await Promise.all(
+        products.map((product) => product.json())
+      );
+      const prod = cartItems.products.map((product, index) => ({
+        ...product,
+        ...productData[index],
+      }));
+      return {
+        ...cartItems,
+        products: prod,
+      };
+    }
+    ```
+
+6.  Debounce
+
+    ```js
+    function debounce(func, delay) {
+      let timeoutId;
+
+      return function (...args) {
+        // Clear previous timeout
+        clearTimeout(timeoutId);
+
+        // Set a new timeout
+        timeoutId = setTimeout(() => {
+          func.apply(this, args);
+        }, delay);
+      };
+    }
+    ```
+
+7.  Throttling
+
+    ```js
+    // Throttle function to limit the rate of function execution
+    function throttle(func, limit) {
+      // Flag to track whether function is currently in throttle state
+      let inThrottle;
+
+      // Return a new function that wraps the original function
+      return function (...args) {
+        // Execute only if not currently throttled
+        if (!inThrottle) {
+          // Invoke the original function with its arguments
+          func.apply(this, args);
+
+          // Set throttle flag to prevent immediate re-execution
+          inThrottle = true;
+
+          // Set a timeout to reset the throttle flag after specified limit
+          setTimeout(() => {
+            // Allow function to be executed again after time limit
+            inThrottle = false;
+          }, limit);
+        }
+      };
+    }
+    ```
