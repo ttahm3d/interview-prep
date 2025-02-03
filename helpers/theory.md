@@ -185,3 +185,26 @@
       | **Server Dependency**    | Requires server configuration | No server dependency                     |
       | **Advanced Features**    | Limited                       | Preloading, A/B testing, dynamic caching |
       | **Cross-Origin Caching** | Tricky due to CORS            | More flexible                            |
+
+9. What are core web vitals?
+
+   - LCP - Largest contentful paint - Marks time at which largest text / image is painted. < 2.5 seconds
+   - INP - Interaction to Next Paint - It assess responsiveness of the app to user interactions. INP of 200 milliseconds or less.
+   - CLS - Cumulative Layout shift - To provide a good user experience, pages should maintain a CLS of 0.1. or less.
+
+10. What is critical rendering path?
+
+    Critical rendering path is the set of steps that browser follows to convert the HTML, CSS and JS code into pixels on the screen
+
+    ```
+    HTML → DOM → Render Tree → Layout → Paint → Compositing
+          ↑
+          CSS → CSSOM
+    ```
+
+    Using HTML, DOM is formed, where each node is an element
+    Using CSS, CSSOM is formed. It needs to process all the css files (because it is render blocking).
+    Render Tree includes the elements that are visible and in the document (removes `display: none`)
+    Layout(Reflow) calculates the exact position of the elements
+    Paint - Converts the render tree into pixels
+    Composting - if there are overlapping layers, browser merges and forms a single layer
