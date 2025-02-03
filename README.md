@@ -9,11 +9,4 @@
 
 1. [Events](/browser/01-Events/01-Events.md)
 
-# Implementations
-
-1. [Debouncing]
-2. [Throttling]
-3. [Polifils]
-   1. Reduce
-
-## 4th Feb Prep - [Link](/helpers/README.md)
+4th Feb Prep - [Link](/helpers/README.md)
