@@ -208,3 +208,34 @@
     Layout(Reflow) calculates the exact position of the elements
     Paint - Converts the render tree into pixels
     Composting - if there are overlapping layers, browser merges and forms a single layer
+
+11. JS vs TS tradeoffs
+
+    Advantages of TypeScript
+
+    - Static typing for early error detection
+    - Enhanced tooling support (IntelliSense)
+    - Better support for object-oriented programming
+    - Gradual adoption in existing JavaScript projects
+
+    Disadvantages of TypeScript
+
+    - Requires transpilation to JavaScript
+    - Steeper learning curve for JavaScript developers
+    - Potential overhead in compiled code size and execution speed
+
+12. difference between any and unkown and which is preferred
+
+    **Any**
+
+    - bypasses ts typesaftey, can lead to run time errors
+    - Used when max flexibility is needed
+
+    **unknown**
+
+    - requires typechecking before value is used
+    - used in scenarios when type is uncertain
+
+    **Unknown is preferred**
+
+13.
