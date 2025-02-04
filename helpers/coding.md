@@ -200,3 +200,79 @@
       };
     }
     ```
+
+8.  Pokemon detials
+
+    ```html
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Pokemon Viewer</title>
+      </head>
+      <body>
+        <select id="pokemonSelect">
+          <option value="">Select a Pokemon</option>
+        </select>
+        <div id="pokemonDetails"></div>
+
+        <script>
+          const pokemonSelect = document.getElementById("pokemonSelect");
+          const detailsContainer = document.getElementById("pokemonDetails");
+          const cache = new Map();
+
+          async function fetchPokemonList() {
+            const response = await fetch(
+              "https://pokeapi.co/api/v2/pokemon?limit=151"
+            );
+            const data = await response.json();
+            return data.results;
+          }
+
+          async function fetchPokemonDetails(url) {
+            if (cache.has(url)) {
+              return cache.get(url);
+            }
+
+            const response = await fetch(url);
+            const data = await response.json();
+            cache.set(url, data);
+            return data;
+          }
+
+          function displayPokemonDetails(pokemon) {
+            detailsContainer.innerHTML = `
+                      <h2>${pokemon.name}</h2>
+                      <img src="${pokemon.sprites.front_default}" alt="${
+              pokemon.name
+            }">
+                      <p>Height: ${pokemon.height}</p>
+                      <p>Weight: ${pokemon.weight}</p>
+                      <p>Types: ${pokemon.types
+                        .map((type) => type.type.name)
+                        .join(", ")}</p>
+                  `;
+          }
+
+          async function initApp() {
+            const pokemons = await fetchPokemonList();
+
+            pokemonSelect.innerHTML += pokemons
+              .map(
+                (pokemon) =>
+                  `<option value="${pokemon.url}">${pokemon.name}</option>`
+              )
+              .join("");
+
+            pokemonSelect.addEventListener("change", async (e) => {
+              if (!e.target.value) return;
+
+              const pokemon = await fetchPokemonDetails(e.target.value);
+              displayPokemonDetails(pokemon);
+            });
+          }
+
+          initApp();
+        </script>
+      </body>
+    </html>
+    ```
